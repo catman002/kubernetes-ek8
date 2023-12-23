@@ -1,0 +1,26 @@
+[Unit]
+Description=Etcd Server
+After=network.target
+After=network-online.target
+Wants=network-online.target
+Documentation=https://github.com/etcd-io/etcd
+
+[Service]
+EnvironmentFile={{etcd_dir}}/etcd.conf
+ExecStart={{etcd_exec_start}} \
+  --cert-file={{etcd_cert_file}} \
+  --key-file={{etcd_key_file}} \
+  --trusted-ca-file={{etcd_trusted_ca_file}} \
+  --peer-cert-file={{etcd_peer_cert_file}} \
+  --peer-key-file={{etcd_peer_key_file}} \
+  --peer-trusted-ca-file={{etcd_peer_trusted_ca_file}} \
+  --peer-client-cert-auth \
+  --client-cert-auth
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+
+

@@ -1,0 +1,19 @@
+{
+  "CN": "{{front_proxy_ca_CN}}",
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "C": "CN",
+      "ST": "Beijing",
+      "L": "Beijing",
+      "O": "front-proxy-client",
+      "OU": "front-proxy-client-ca Security"
+    }
+  ],
+  "ca": {
+    "expiry": "{{ca_expire_time}}h"
+  }
+}

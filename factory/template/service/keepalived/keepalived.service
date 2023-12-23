@@ -1,0 +1,14 @@
+[Unit]
+Description=Keepalived
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+#type=forking
+PIDFile=/var/run/keepalived.pid
+ExecStart={{keepalived_exec_start}} -D
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

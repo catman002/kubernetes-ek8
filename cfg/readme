@@ -1,0 +1,56 @@
+########################################
+#关于 nerdctl build: http://it.wonhero.com/itdoc/post/2023/0320/8FC6F69809E3C3B0
+Calico Kubernetes requirements
+https://projectcalico.docs.tigera.io/about/about-calicohttps://projectcalico.docs.tigera.io/about/about-calico
+
+calico/kube-controllers:v3.xx
+calico/cni:v3.xx
+calico/pod2daemon-flexvol:3.x
+calico/node:v3.x
+########################################
+#We test Calico v3.22 against the following Kubernetes versions.
+v1.21
+v1.22
+v1.23
+
+We test Calico v3.19 against the following Kubernetes versions.
+v1.19
+v1.20
+v1.21
+
+We test Calico v3.20 against the following Kubernetes versions.
+v1.19
+v1.20
+v1.21
+
+
+
+########################################
+etcd Kubernetes requirements
+https://github.com/etcd-io/etcd
+########################################
+We test etcd v3.4.13 against the following Kubernetes versions.
+v1.21
+v1.22
+v1.23
+
+We test etcd v3.5 against the following Kubernetes versions.
+v1.22
+v1.23
+
+
+########################################
+coreDNS Kubernetes requirements
+https://github.com/coredns/coredns
+部署：https://github.com/coredns/deployment/tree/master/kubernetes
+########################################
+We test coredns v1.8 against the following Kubernetes versions.
+v1.21
+v1.22
+v1.23
+
+We test coredns v1.9.1 against the following Kubernetes versions.
+v1.23
+
+
+crictl:https://github.com/kubernetes-sigs/cri-tools

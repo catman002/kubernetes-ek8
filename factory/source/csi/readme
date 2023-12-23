@@ -1,0 +1,15 @@
+docker save -o csi-attacher.rar k8s.gcr.io/sig-storage/csi-attacher:v3.3.0
+docker save -o csi-resizer.rar k8s.gcr.io/sig-storage/csi-resizer:v1.3.0
+docker save -o driver.rar gcr.io/cloud-provider-vsphere/csi/release/driver:v2.4.0
+docker save -o livenessprobe.rar k8s.gcr.io/sig-storage/livenessprobe:v2.4.0
+docker save -o syncer.rar gcr.io/cloud-provider-vsphere/csi/release/syncer:v2.4.0
+docker save -o csi-provisioner.rar k8s.gcr.io/sig-storage/csi-provisioner:v3.0.0
+docker save -o csi-node-driver-registrar.rar k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.3.0
+
+docker load -i csi-attacher.rar
+docker load -i csi-resizer.rar
+docker load -i driver.rar
+docker load -i livenessprobe.rar
+docker load -i syncer.rar
+docker load -i csi-provisioner.rar
+docker load -i csi-node-driver-registrar.rar

@@ -1,0 +1,8 @@
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "registry-mirrors": ["https://ustc-edu-cn.mirror.aliyuncs.com","http://f1361db2.m.daocloud.io"],
+  "insecure-registries": ["{{registry_server}}"],
+  "log-driver":"json-file",
+  "log-opts": {"max-size":"50m", "max-file":"2"},
+  "live-restore": true
+}

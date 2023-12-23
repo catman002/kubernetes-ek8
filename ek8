@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#system info
+allInfo=`uname -a`
+system=`uname -s`
+arch=`uname -m`
+if [[ $arch = 'arm64' ]];then
+  cpu_type=${arch:0:3}
+  cpu_bit=${arch:3:2}
+else
+  cpu_type=${arch%_*}
+  cpu_bit=${arch#*_}
+fi
+
+#choice ek8 
+if [[ $system = "Linux"  && $cpu_type = "x86" && $cpu_bit = "64" ]];then
+  echo $allInfo
+  echo ""
+  ./ek8_linux_amd64 $@
+elif [[ $system = "Darwin"  && $cpu_type = "x86" && $cpu_bit = "64" ]];then
+    echo $allInfo
+    echo ""
+  ./ek8_mac_amd64  $@
+elif [[ $system = "Darwin"  && $cpu_type = "arm" && $cpu_bit = "64" ]];then
+    echo $allInfo
+    echo ""
+  ./ek8_mac_amd64  $@
+else
+   echo "[警告]你的安装电脑的系统是：${allInfo}"
+   echo "[警告]ek8目前不支持当前系统作为安装机，请使用装有mac（arm64或amd64），或使用amd64架构并安装了centos、centos8、stream、rockyLinux、almaLinux系统电脑作为安装机。"
+fi

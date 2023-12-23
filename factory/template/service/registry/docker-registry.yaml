@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-registry
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: docker-registry
+  template:
+    metadata:
+      labels:
+        app: docker-registry
+        kubernetes.io/cluster-service: "true"
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: node1
+      containers:
+        - name: docker-registry
+          image: docker.io/library/registry:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8443
+          env:
+            - name: REGISTRY_HTTP_ADDR
+              value: "0.0.0.0:8443"
+            - name: REGISTRY_HTTP_TLS_CERTIFICATE
+              value: "{{registry_server_repo_url}}/certs/registry.pem"
+            - name: REGISTRY_HTTP_TLS_KEY
+              value: "{{registry_server_repo_url}}/certs/registry-key.key"
+            - name: REGISTRY_AUTH
+              value: "htpasswd"
+            - name: REGISTRY_AUTH_HTPASSWD_PATH
+              value: "{{registry_server_repo_url}}/auth/htpasswd"
+            - name: REGISTRY_AUTH_HTPASSWD_REALM
+              value: "Registry Realm"
+          volumeMounts:
+            - name: reg-data
+              mountPath: /var/lib/registry
+            - name: reg-auth
+              mountPath: /auth
+            - name: reg-certs
+              mountPath: /certs
+      volumes:
+        - name: reg-data
+          hostPath:
+            path: {{registry_server_repo_url}}/images
+        - name: reg-auth
+          hostPath:
+            path: {{registry_server_repo_url}}/auth
+        - name: reg-certs
+          hostPath:
+            path: {{registry_server_repo_url}}/certs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: docker-registry
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+    - port: 8443
+      targetPort: 8443
+      nodePort: {{registry_server_port}}
+      protocol: TCP
+  selector:
+    app: docker-registry

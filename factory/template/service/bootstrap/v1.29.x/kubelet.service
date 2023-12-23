@@ -1,0 +1,30 @@
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://github.com/kubernetes/kubernetes
+After=containerd.service
+Requires=containerd.service
+
+
+[Service]
+WorkingDirectory={{kubelet_work_dir}}
+ExecStart={{kubelet_exec_start}} \
+      --bootstrap-kubeconfig={{kubernetes_etc_dir}}/kubelet-bootstrap.kubeconfig  \
+      --kubeconfig={{kubernetes_etc_dir}}/kubelet.kubeconfig \
+      --config={{kubelet_dir}}/kubelet.yaml \
+      --runtime-request-timeout=15m  \
+      --container-runtime-endpoint=unix:///run/containerd/containerd.sock  \
+      --pod-infra-container-image={{pod_infra_container_image}} \
+      --cert-dir={{kubernetes_etc_pki_dir}} \
+      --cgroup-driver=systemd \
+      --rotate-certificates \
+      --rotate-server-certificates \
+      --feature-gates=RotateKubeletServerCertificate=true
+
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
+#--rotate-certificates 向controller发起客户端证书续签请求
+#--rotate-server-certificates 向controller发起服务器端证书续签请求
