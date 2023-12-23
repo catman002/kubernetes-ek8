@@ -110,7 +110,7 @@ keepalivedCONFIG、kubeProxyCONFIG、registryCONFIG、schedulerCONFIG、initEnvC
 kubebin、apiserver、haproxy、keepalived、admin,controller、scheduler、bootstrap、kubeproxy、calico、coredns、dnsutils、registry
 4）all 代表所有模块
 ```
-#### （五）ek8命令例子:
+#### （五）ek8命令安装k8s集群例子:
 ```
 1) 全新安装，依据config.cfg配置，创建集群所需文件，包含证书、服务配置、脚本、集群安全等文件，并安装：
 ./ek8 create all && ./ek8 install all
