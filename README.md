@@ -47,7 +47,7 @@ centos: yum install git-lfs
 4. 安装机的系统要求：
 * 支持amd64或arm64架构的mac系统；
 * 支持amd64架构的linux,如：centos7、centos8 stream、rockyLinux、almaLinux、ubuntu等系统。
-5. *****安装机的软件要求：ssh、sshpass、rsync 软件需要提前安装。*****
+5. *****安装机的软件要求：ssh、sshpass、rsync 、go 需要提前安装。*****
 6. 安装前先配置config.cfg文件
 
   ***此版本仅作为学习～～交流使用～～，只支持最新2个大版本的最新构建与安装 ！***
@@ -72,7 +72,6 @@ centos: yum install git-lfs
 2. 了解构建内部流程和安装内部流程：
 
 <img width="884" alt="image" src="https://github.com/catman002/kubernetes-ek8/assets/35952528/530c08c8-6624-4ade-9e00-de750e3db2d1">
-
 
 <img width="932" alt="image" src="https://github.com/catman002/kubernetes-ek8/assets/35952528/4f9fa408-8a15-40e4-a487-b55cd5c32d47">
 
