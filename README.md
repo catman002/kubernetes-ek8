@@ -103,9 +103,9 @@ info: 显示ek8版本信息。
 1）与证书的相关模块：caCONFIG、ca、registryCA、etcdCA、frontProxyCA、adminCERT、apiserverCERT、apiserverEtcdClientCERT
  apiserverKubeletClientCERT、bootstrapCERT、controllerManagerCERT、etcdClientCERT、etcdPeerCERT、etcdServerCERT,frontProxyClientCERT、
 kubeProxyCERT、registryCERT、saCERT、schedulerCERT、tokenCSV
-2）与服务的配置相关的模块：source、apiserverCONFIG、bootstrapCONFIG、calicoCONFIG、controllerManagerCONFIG、corednsCONFIG、dockerCONFIG、etcdCONFIG,haproxyCONFIG、
+2）create、appendmasters、appendnodes命令相关的模块：source、apiserverCONFIG、bootstrapCONFIG、calicoCONFIG、controllerManagerCONFIG、corednsCONFIG、dockerCONFIG、etcdCONFIG,haproxyCONFIG、
 keepalivedCONFIG、kubeProxyCONFIG、registryCONFIG、schedulerCONFIG、initEnvCONFIG
-3)install、installnew、delete、qdelete、stop、start子命令支持的模块：config、soft、deploy、initenv、hostname、cert、docker、containerd、etcd、
+3)install、installnew、delete、qdelete、stop、start命令支持的模块：config、soft、deploy、initenv、hostname、cert、docker、containerd、etcd、
 kubebin、apiserver、haproxy、keepalived、admin,controller、scheduler、bootstrap、kubeproxy、calico、coredns、dnsutils、registry
 4）all 代表所有模块
 ```
